@@ -1,36 +1,41 @@
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
+// Nav box hover and click functionality
+const navBox = document.getElementById('navBox');
 const navLinks = document.querySelectorAll('.nav-link');
+const navbar = document.getElementById('navbar');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
+// Mobile: Toggle nav box on click/tap
+let isNavExpanded = false;
 
-// Close mobile menu when clicking on a link
+// Check if device is touch-enabled
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (isTouchDevice || window.innerWidth <= 968) {
+  navBox.addEventListener('click', (e) => {
+    e.stopPropagation();
+    isNavExpanded = !isNavExpanded;
+    navBox.classList.toggle('expanded', isNavExpanded);
+  });
+
+  // Close nav box when clicking outside
+  document.addEventListener('click', (e) => {
+    if (isNavExpanded && !navBox.contains(e.target)) {
+      isNavExpanded = false;
+      navBox.classList.remove('expanded');
+    }
+  });
+}
+
+// Close nav box when clicking on a link (for mobile)
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
+    if (window.innerWidth <= 968 || isTouchDevice) {
+      isNavExpanded = false;
+      navBox.classList.remove('expanded');
+    }
   });
 });
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  
-  if (currentScroll > 100) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-  
-  lastScroll = currentScroll;
-});
+// Navbar remains fixed and centered - no scroll effects
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
