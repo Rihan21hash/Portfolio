@@ -7,7 +7,7 @@ AI is not a replacement for developers. It is a companion that helps speed up ta
 ## How to run
 1. Clone the repository.
 2. Open the project folder.
-3. Launch index.html in your browser
+3. Launch index.html in your browser.
 
 ## Acknowledgments
 Thanks to Cursor AI for assisting with styling.
