@@ -9,5 +9,7 @@ AI is not a replacement for developers. It is a companion that helps speed up ta
 2. Open the project folder.
 3. Launch index.html in your browser.
 
+Or click on this link - https://rihan21hash.github.io/Portfolio/
+
 ## Acknowledgments
 Thanks to Cursor AI for assisting with styling.
